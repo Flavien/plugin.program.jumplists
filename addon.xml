@@ -16,7 +16,7 @@
     <website>https://github.com/flavien/</website>
     <email>flavien@charlon.net</email>
     <assets>
-      <icon>resources/icon.png</icon>
+      <icon>icon.png</icon>
     </assets>
   </extension>
 </addon>
