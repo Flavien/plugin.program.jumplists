@@ -8,7 +8,7 @@
     <provides>executable</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Custom lists of favourites</summary>
+    <summary lang="en">Display a custom list of favourites</summary>
     <description lang="en"></description>
     <license>Apache License 2.0</license>
     <language>en</language>

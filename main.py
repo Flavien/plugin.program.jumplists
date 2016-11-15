@@ -22,25 +22,8 @@ plugin = xbmcswift2.Plugin()
 big_list_view = False
 root_launch = True
 
-def addon_id():
-    return xbmcaddon.Addon().getAddonInfo('id')
-
 def log(v):
     xbmc.log(repr(v))
-
-def escape( str ):
-    str = str.replace("&", "&amp;")
-    str = str.replace("<", "&lt;")
-    str = str.replace(">", "&gt;")
-    str = str.replace("\"", "&quot;")
-    return str
-
-def unescape( str ):
-    str = str.replace("&lt;","<")
-    str = str.replace("&gt;",">")
-    str = str.replace("&quot;","\"")
-    str = str.replace("&amp;","&")
-    return str
 
 @plugin.route('/execute/<url>')
 def execute(url):
@@ -52,7 +35,7 @@ def jumplist():
         return None
 
     path = plugin.request.args["path"][0]
-
+    
     file_path = xbmc.translatePath(path)
 
     root = xml.etree.ElementTree.parse(file_path).getroot()
@@ -60,7 +43,7 @@ def jumplist():
     return [
     {
         'label': favourite.attrib["name"],
-        'path': plugin.url_for('execute', url=unescape(favourite.text)),
+        'path': plugin.url_for('execute', url = favourite.text),
         'thumbnail': favourite.attrib["thumb"]
     }
     for favourite in root.findall("./favourite")]
