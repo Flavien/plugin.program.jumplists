@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import xbmcswift2
 import xbmc
+import xbmcswift2
 import xml.etree.ElementTree
 
 plugin = xbmcswift2.Plugin()
