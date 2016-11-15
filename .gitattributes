@@ -1,0 +1,22 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Text files
+# ==========
+*.md        text
+*.pxd       text
+*.py        text
+*.py3       text
+*.pyw       text
+*.pyx       text
+*.txt       text
+*.xml       text
+
+# Binary files
+# ============
+*.db        binary
+*.p         binary
+*.pkl       binary
+*.pyc       binary
+*.pyd       binary
+*.pyo       binary
