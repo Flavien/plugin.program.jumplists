@@ -18,11 +18,11 @@ import xml.etree.ElementTree
 
 plugin = xbmcswift2.Plugin()
 
-@plugin.route('/execute/<url>')
+@plugin.route("/execute/<url>")
 def execute(url):
     xbmc.executebuiltin(url)
 
-@plugin.route('/')
+@plugin.route("/")
 def index():
     if not "path" in plugin.request.args:
         return None
@@ -35,12 +35,12 @@ def index():
 
     return [
     {
-        'label': favourite.attrib["name"],
-        'path': plugin.url_for('execute', url = favourite.text),
-        'thumbnail': favourite.attrib["thumb"]
+        "label": favourite.attrib.get("name", favourite.text),
+        "path": plugin.url_for("execute", url = favourite.text),
+        "thumbnail": favourite.attrib.get("thumb", None)
     }
     for favourite in root.findall("./favourite")]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     plugin.run()
