@@ -14,23 +14,16 @@
 
 import xbmcswift2
 import xbmc
-import xbmcaddon
-import xbmcvfs
 import xml.etree.ElementTree
 
 plugin = xbmcswift2.Plugin()
-big_list_view = False
-root_launch = True
-
-def log(v):
-    xbmc.log(repr(v))
 
 @plugin.route('/execute/<url>')
 def execute(url):
     xbmc.executebuiltin(url)
 
-@plugin.route('/jumplist')
-def jumplist():
+@plugin.route('/')
+def index():
     if not "path" in plugin.request.args:
         return None
 
@@ -48,44 +41,6 @@ def jumplist():
     }
     for favourite in root.findall("./favourite")]
 
-@plugin.route('/')
-def index():
-    #if root_launch:
-    #    folder_path = "special://profile/addon_data/plugin.program.super.favourites/Super Favourites/"
-    #    return jumplists(folder_path)
-    #else:
-    log("index")
-    return None
-
-@plugin.route('/jumplists/<path>')
-def jumplists(path=None):
-    items = []
-
-    folders, files = xbmcvfs.listdir(path)
-    for folder in sorted(folders, key=lambda x: x.lower()):
-        folder_path = "%s%s/" % (path, folder)
-        thumbnail_file = "%sicon.txt" % folder_path
-        thumbnail = xbmcvfs.File(thumbnail_file,"rb").read()
-
-        items.append(
-        {
-            'label': folder,
-            'path': plugin.url_for('jumplist', path="%sfavourites.xml" % (folder_path)),
-            'thumbnail':thumbnail,
-            'context_menu': [],
-        })
-
-    return items
-
 
 if __name__ == '__main__':
-
-    ADDON = xbmcaddon.Addon()
-    version = ADDON.getAddonInfo('version')
-    if ADDON.getSetting('version') != version:
-        ADDON.setSetting('version', version)
-
     plugin.run()
-    if big_list_view == True:
-        view_mode = int(plugin.get_setting('view_mode'))
-        plugin.set_view_mode(view_mode)
