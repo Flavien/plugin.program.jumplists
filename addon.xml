@@ -8,8 +8,8 @@
     <provides>executable</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Display a custom list of favourites</summary>
-    <description lang="en"></description>
+    <summary lang="en">Display a list of customisable links</summary>
+    <description lang="en">Jumplists is a lightweight Kodi add-on that displays a list of customisable links.</description>
     <license>Apache License 2.0</license>
     <language>en</language>
     <source>https://github.com/flavien/plugin.program.jumplists/</source>

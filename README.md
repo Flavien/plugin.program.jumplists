@@ -1,7 +1,7 @@
 Jumplists
 =========
 
-Jumplist is a lightweight Kodi add-on that displays a window containing a list of custom links.
+Jumplists is a lightweight Kodi add-on that displays a list of customisable links.
 
 Instructions
 ------------
